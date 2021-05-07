@@ -11,7 +11,7 @@ module.exports = {
 
     },
 
-    GetProductsByBrand: (req, res) => {
+    getProductsByBrand: (req, res) => {
 
     },
 

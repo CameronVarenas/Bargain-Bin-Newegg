@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express'),
       authCtrl = require('./controllers/authController'),
       cartCtrl = require('./controllers/cartController'),
-      productCtrl = require('./controllers/productsController'),
+      productsCtrl = require('./controllers/productsController'),
       profileCtrl = require('./controllers/profileController'),
       reviewsCtrl = require('./controllers/reviewsController'),
       auth = require('./middleware/authMiddleware'),
@@ -41,19 +41,19 @@ app.get('/auth/session', authCtrl.getSession)
 
 // Cart Endpoints
 app.get('/cart/:user_id', auth.usersOnly, cartCtrl.getUsersCart)
-app.post(`/cart/?product=${product_id}&user=${user_id}`, auth.usersOnly, cartCtrl.addItemToCart)
+app.post('/cart/?product&user', auth.usersOnly, cartCtrl.addItemToCart)
 app.put('/cart/:product_id', auth.usersOnly, cartCtrl.updateQuantity)
 app.delete('/cart/cart_id', auth.usersOnly, cartCtrl.removeItemFromCart)
 
 // Products Endpoints
-app.get('/products/', productCtrl.getAllProducts)
-app.get('/products/product_id', productCtrl.getProduct)
-app.get(`/products/?type=${type}`, productCtrl.getProductsByType)
-app.get(`/products/?brand=${brand}`, productCtrl.getProductsByBrand)
-app.get('/products/featured', productCtrl.getFeaturedProducts)
+app.get('/products/', productsCtrl.getAllProducts)
+app.get('/products/:product_id', productsCtrl.getProduct)
+app.get('/products/?type', productsCtrl.getProductsByType)
+app.get('/products/?brand', productsCtrl.getProductsByBrand)
+app.get('/products/:featured', productsCtrl.getFeaturedProducts)
 
 // Profile Endpoints
-app.get(`/users/?user=${user_id}&profile_img_url=${profile_img_url}`, auth.usersOnly, profileCtrl.getUserProfileImg)
+app.get('/users/?user&profile_img_url', auth.usersOnly, profileCtrl.getUserProfileImg)
 
 // Reviews Endpoints
 app.get('/reviews/:product_id', reviewsCtrl.getProductReviews)
