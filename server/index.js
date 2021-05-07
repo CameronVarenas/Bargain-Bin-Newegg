@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express'),
-      authController = require('./controllers/authController'),
-      cartController = require('./controllers/cartController'),
-      productController = require('./controllers/productsController'),
-      profileController = require('./controllers/profileController'),
-      reviewsController = require('./controllers/reviewsController'),
+      authCtrl = require('./controllers/authController'),
+      cartCtrl = require('./controllers/cartController'),
+      productCtrl = require('./controllers/productsController'),
+      profileCtrl = require('./controllers/profileController'),
+      reviewsCtrl = require('./controllers/reviewsController'),
       auth = require('./middleware/authMiddleware'),
       massive = require('massive'),
       session = require('express-session'),
@@ -34,14 +34,34 @@ app.use(
 );
 
 // Auth Endpoints
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.get('/auth/logout', authCtrl.logout)
+app.get('/auth/session', authCtrl.getSession)
 
 // Cart Endpoints
+app.get('/cart/:user_id', cartCtrl.getUsersCart)
+app.post(`/cart/?product=${product_id}&user=${user_id}`, cartCtrl.addItemToCart)
+app.put('/cart/:product_id', cartCtrl.updateQuantity)
+app.delete('/cart/cart_id', cartCtrl.removeItemFromCart)
 
 // Products Endpoints
+app.get('/products/', productCtrl.getAllProducts)
+app.get('/products/product_id', productCtrl.getProduct)
+app.get(`/products/?type=${type}`, productCtrl.getProductsByType)
+app.get(`/products/?brand=${brand}`, productCtrl.getProductsByBrand)
+app.get('/products/featured', productCtrl.getFeaturedProducts)
 
 // Profile Endpoints
+app.get(`/users/?user=${user_id}&profile_img_url=${profile_img_url}`, profileCtrl.getUserProfileImg)
 
 // Reviews Endpoints
+app.get('/reviews/:product_id', reviewsCtrl.getProductReviews)
+app.get('/reviews/:user_id', reviewsCtrl.getUserReviews)
+app.get('/reviews/:timestamp', reviewsCtrl.getRecentReviews)
+app.post('/reviews/:product_id', reviewsCtrl.postReview)
+app.put('/reviews/:review_id', reviewsCtrl.editReview)
+app.delete('/reviews/:review_id', reviewsCtrl.deleteReview)
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port: ${SERVER_PORT}`);
