@@ -8,7 +8,7 @@ module.exports = {
         res.sendStatus(403);
     },
 
-    register: (req, res) => {
+    register: async (req, res) => {
         const {register_username, register_email, register_password} = req.body;
         const db = req.app.get('db');
         const result = await db.users.find_user_by_username([register_username]);
@@ -25,7 +25,7 @@ module.exports = {
         return res.status(201).send(req.session.user);
     },
 
-    login: (req, res) => {
+    login: async (req, res) => {
         const {username, password} = req.body;
         const foundUser = await req.app.get('db').users.find_user_by_username([username]);
         const user = foundUser[0];
