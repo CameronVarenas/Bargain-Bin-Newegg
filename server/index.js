@@ -53,7 +53,7 @@ app.get('/products/?brand', productsCtrl.getProductsByBrand)
 app.get('/featured-products/', productsCtrl.getFeaturedProducts)
 
 // Profile Endpoints
-app.get('/users/?user&profile_img_url', auth.usersOnly, profileCtrl.getUserProfileImg)
+app.get('/users/:user_id', auth.usersOnly, profileCtrl.getUserProfileImg)
 
 // Reviews Endpoints
 app.get('/reviews/:product_id', reviewsCtrl.getProductReviews)
