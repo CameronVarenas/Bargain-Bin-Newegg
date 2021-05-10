@@ -41,9 +41,9 @@ app.get('/auth/session', authCtrl.getSession)
 
 // Cart Endpoints
 app.get('/cart/:user_id', auth.usersOnly, cartCtrl.getUsersCart)
-app.post('/cart/?product&user', auth.usersOnly, cartCtrl.addItemToCart)
-app.put('/cart/:product_id', auth.usersOnly, cartCtrl.updateQuantity)
-app.delete('/cart/cart_id', auth.usersOnly, cartCtrl.removeItemFromCart)
+app.post('/cart/', auth.usersOnly, cartCtrl.addItemToCart)
+app.put('/cart/:cart_id', auth.usersOnly, cartCtrl.updateQuantity)
+app.delete('/cart/:cart_id', auth.usersOnly, cartCtrl.removeItemFromCart)
 
 // Products Endpoints
 app.get('/products/', productsCtrl.getAllProducts)
