@@ -16,7 +16,7 @@ module.exports = {
         if (existingUser) {
             return res.status(409).send('Username taken');
         }
-        const salt = bcrypt.getSaltSync(10);
+        const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(register_password, salt);
         const registeredUser = await db.users.create_user([register_username, register_email, hash]);
         const user = registeredUser[0];
