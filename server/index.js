@@ -48,8 +48,8 @@ app.delete('/cart/:cart_id', auth.usersOnly, cartCtrl.removeItemFromCart)
 // Products Endpoints
 app.get('/products/', productsCtrl.getAllProducts)
 app.get('/products/:product_id', productsCtrl.getProduct)
-app.get('/products/?type', productsCtrl.getProductsByType)
-app.get('/products/?brand', productsCtrl.getProductsByBrand)
+app.get('/products-type/', productsCtrl.getProductsByType)
+app.get('/products-brand/', productsCtrl.getProductsByBrand)
 app.get('/featured-products/', productsCtrl.getFeaturedProducts)
 
 // Profile Endpoints

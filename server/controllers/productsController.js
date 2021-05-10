@@ -13,11 +13,17 @@ module.exports = {
     },
 
     getProductsByType: async (req, res) => {
-
+        const {type} = req.body;
+        const db = req.app.get('db');
+        const result = await db.products.get_product_by_type(type);
+        return res.status(201).send(result);
     },
 
     getProductsByBrand: async (req, res) => {
-
+        const {brand} = req.body;
+        const db = req.app.get('db');
+        const result = await db.products.get_product_by_brand(brand);
+        return res.status(201).send(result);
     },
 
     getFeaturedProducts: async (req, res) => {
