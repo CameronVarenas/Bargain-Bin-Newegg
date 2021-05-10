@@ -50,7 +50,7 @@ app.get('/products/', productsCtrl.getAllProducts)
 app.get('/products/:product_id', productsCtrl.getProduct)
 app.get('/products/?type', productsCtrl.getProductsByType)
 app.get('/products/?brand', productsCtrl.getProductsByBrand)
-app.get('/products/:featured', productsCtrl.getFeaturedProducts)
+app.get('/featured-products/', productsCtrl.getFeaturedProducts)
 
 // Profile Endpoints
 app.get('/users/?user&profile_img_url', auth.usersOnly, profileCtrl.getUserProfileImg)
