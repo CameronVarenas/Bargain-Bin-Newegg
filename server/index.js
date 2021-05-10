@@ -57,8 +57,8 @@ app.get('/users/:user_id', auth.usersOnly, profileCtrl.getUserProfileImg)
 
 // Reviews Endpoints
 app.get('/reviews/:product_id', reviewsCtrl.getProductReviews)
-app.get('/reviews/:user_id', auth.usersOnly, reviewsCtrl.getUserReviews)
-app.get('/reviews/:timestamp', reviewsCtrl.getRecentReviews)
+app.get('/user-reviews/:user_id', auth.usersOnly, reviewsCtrl.getUserReviews)
+app.get('/recent-reviews/', reviewsCtrl.getRecentReviews)
 app.post('/reviews/:product_id', auth.usersOnly, reviewsCtrl.postReview)
 app.put('/reviews/:review_id', auth.usersOnly, reviewsCtrl.editReview)
 app.delete('/reviews/:review_id', auth.usersOnly, reviewsCtrl.deleteReview)
