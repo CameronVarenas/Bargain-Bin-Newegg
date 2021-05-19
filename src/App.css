@@ -1,38 +1,107 @@
 .App {
+  background-color: grey;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Main Display */
+
+.header {
+  width: 100%;
+  background-color: lightgrey; 
+}
+
+.header-text {
+  display: flex;
+  align-items: center;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.section {
+  display: flex;
+  margin-left: 9%;
+}
+
+.options {
+  margin-left: 25px;
+}
+
+.scroll-bar {
+  height: 40px;
+  width: 100%;
+  background-color: rgb(163, 163, 163);
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.scroll-bar-content {
+  margin: 2% 3% 3% 3%;
+}
+
+.page-display {
+  height: 85.5vh;
+  background-color: white;
+  margin: 0% 5%;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Landing page featured items */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.featured-items-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: scroll;
 }
 
-.App-link {
-  color: #61dafb;
+.featured-items-title {
+  text-align: left;
+  margin-left: 5%;
+  padding-top: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mapped-features-section {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  border: grey 2px solid;
+  border-radius: 5%;
+  background-color: lightgrey;
+}
+
+.mapped-features-text {
+  margin: 0 auto;
+}
+
+.mapped-features-button {
+  justify-items: center;
+}
+
+/* Landing page recent reviews */
+
+.recent-reviews-section {
+  height: 375px;
+  display: inline-block;
+  overflow-y: scroll;
+  border: grey 2px solid;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: 2%;
+
+}
+
+.mapped-recent-reviews-section {
+  width: 350px;
+  height: 150px;
+  margin: 5px;
+  border: grey 2px solid;
+  border-radius: 5%;
+  background-color: lightgrey;
+}
+
+.mapped-recent-reviews-text {
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-left: 10px;
+  text-align: left;
 }
